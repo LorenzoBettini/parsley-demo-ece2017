@@ -1,4 +1,4 @@
-package example.view.resource;
+package init.resource;
 
 import library.Book;
 import library.Library;
@@ -12,7 +12,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class ViewResourceManager extends ResourceManager {
+public class InitResourceManager extends ResourceManager {
   private final LibraryFactory factory = LibraryFactory.eINSTANCE;
   
   public LibraryFactory getFactory() {

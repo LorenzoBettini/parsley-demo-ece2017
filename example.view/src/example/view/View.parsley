@@ -1,10 +1,12 @@
 import example.view.ViewSaveableTreeFormView
+import init.InitEmfParsleyGuiceModule
 import library.Library
 import library.LibraryFactory
 import library.Writer
+import org.eclipse.swt.SWT
 
 /* example.view EMF Parsley Dsl Module file */
-module example.view {
+module example.view extends InitEmfParsleyGuiceModule {
 	
 	parts {
 		viewpart example.view {
@@ -13,70 +15,43 @@ module example.view {
 		}
 	}
 	
-	configurator {
-		resourceURI {
-			ViewSaveableTreeFormView -> {
-				// TODO create and return a org.eclipse.emf.common.util.URI
-				return null;
-			}
-		}
-	}
-	
-	viewerContentProvider {
-		children {
-			Writer -> {
-				books
-			}
-		}
-	}
-	
-	menuBuilder {
-		emfMenus {
-			Writer w -> {
-				#[
-					actionChange("New Book", w.eContainer as Library) [
-						library |
-						library.books += LibraryFactory.eINSTANCE.createBook => [
-							title = "New Book"
-							author = w
-						]
-					]
-				]
-			}
-		}
-	}
-	
-	bindings {
+	bindings{
 		value int TreeFormSashStyle -> SWT.HORIZONTAL
-		value int DetailGridColumns -> 4
 	}
 	
-	resourceManager {
-		val factory = LibraryFactory.eINSTANCE
-		
-		initializeResource {
-			contents += factory.createLibrary => [
-				lib |
-				lib.name = "My Library"
-				
-				lib.writers += factory.createWriter => [
-					firstName = "John"
-					lastName = "Doe"
-				]
-
-				lib.writers += factory.createWriter => [
-					firstName = "Paul"
-					lastName = "Smith"
-				]
-				
-				lib.books += factory.createBook => [
-					title = "A Book"
-					author = lib.writers.get(0)
-				]
-				lib.books += factory.createBook => [
-					title = "Another Book"
-				]
-			]
-		}
-	}
+//	viewerContentProvider {
+//		children {
+//			Writer -> {
+//				books
+//			}
+//		}
+//	}
+//	
+//	menuBuilder {
+//		emfMenus {
+//			Writer w -> {
+//				#[
+//					actionChange("New Book", w.eContainer as Library) [
+//						library |
+//						library.books += LibraryFactory.eINSTANCE.createBook => [
+//							title = "New Book"
+//							author = w
+//						]
+//					],
+//					actionChange("New Book",w.eContainer as Library) [
+//						library | 
+//						library.books += LibraryFactory.eINSTANCE.createBook => [
+//							title = "New Book"
+//							author = w
+//						]
+//					]
+//				]
+//			}
+//		}
+//	}
+//	
+//	bindings {
+//		value int TreeFormSashStyle -> SWT.HORIZONTAL
+//		value int DetailGridColumns -> 4
+//	}
 }
