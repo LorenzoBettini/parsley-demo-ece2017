@@ -33,7 +33,7 @@ public interface Book extends EObject {
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see library.LibraryPackage#getBook_Title()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getTitle();
