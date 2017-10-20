@@ -1,0 +1,19 @@
+.DS_Store
+
+.metadata
+*.class
+bin/
+*~
+logs.zip
+*.orig
+.svn/
+target/
+*.java._trace
+*.smap
+hs_*.log
+
+# we ignore its contents, not the whole directory
+# xtend-gen
+# src-gen
+
+org.sonar.ide.eclipse.core.prefs
